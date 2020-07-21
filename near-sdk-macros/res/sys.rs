@@ -33,6 +33,9 @@ pub mod sys {
         pub fn sha256(value_len: u64, value_ptr: u64, register_id: u64);
         pub fn keccak256(value_len: u64, value_ptr: u64, register_id: u64);
         pub fn keccak512(value_len: u64, value_ptr: u64, register_id: u64);
+        pub fn alt_bn128_pairing_check(value_len: u64, value_ptr: u64) -> u64;
+        pub fn alt_bn128_g1_multiexp(value_len: u64, value_ptr: u64, register_id: u64);
+        pub fn alt_bn128_g1_sum(value_len: u64, value_ptr: u64, register_id: u64);
         // #####################
         // # Miscellaneous API #
         // #####################
