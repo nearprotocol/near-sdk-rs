@@ -16,7 +16,7 @@ near-sdk-sim = { path = "../../near-sdk-sim" }
 [profile.release]
 codegen-units = 1
 # Tell `rustc` to optimize for small code size.
-opt-level = "s"
+opt-level = "z"
 lto = true
 debug = false
 panic = "abort"
