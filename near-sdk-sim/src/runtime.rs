@@ -1,4 +1,6 @@
 use std::collections::HashMap;
+use std::fs;
+use std::path::Path;
 use std::sync::Arc;
 
 use crate::cache::{cache_to_arc, create_cache, ContractCache};
@@ -82,6 +84,26 @@ impl GenesisConfig {
             access_key: AccessKey::full_access(),
         });
         signer
+    }
+
+    pub fn add_account(mut self, account_id: AccountId, amount: u128) -> Self {
+        self.state_records.push(StateRecord::Account {
+            account_id,
+            account: Account {
+                amount,
+                locked: 0,
+                storage_usage: 0,
+                code_hash: CryptoHash::default(),
+            },
+        });
+        self
+    }
+
+    pub fn load_state_records(mut self, path: &Path) -> Self {
+        let data = fs::read(path).unwrap();
+        let state: Vec<_> = serde_json::from_slice(&data).unwrap();
+        self.state_records.extend(state);
+        self
     }
 }
 
@@ -516,5 +538,14 @@ mod tests {
         bob_account.locked = 10000;
         runtime.force_account_update("root".into(), &bob_account);
         assert_eq!(runtime.view_account(&"root").unwrap().locked, 10000);
+    }
+
+    #[test]
+    fn test_load_states() {
+        let mut genesis = GenesisConfig::default()
+            .add_account("simple-state.repro.testnet".to_string(), 165437999999999999999000)
+            .add_account("multiple-state.repro.testnet".to_string(), 165437999999999999999000)
+            .load_state_records(Path::new("./res/state_records.json"));
+        let _ = init_runtime(Some(genesis));
     }
 }

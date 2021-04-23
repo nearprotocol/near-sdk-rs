@@ -6,9 +6,9 @@ But the true power of blockchains & smart contracts comes from cross-contract ca
 
 As a first step, you can use this library! With it, you can:
 
-* Test cross-contract calls
-* Profile [gas](https://docs.near.org/docs/concepts/gas) & [storage](https://docs.near.org/docs/concepts/storage-staking) usage for your contract, establishing lower bounds for costs of deployed contracts and rapidly identifying problematic areas prior to deploying.
-* Inspect intermediate state of all calls in a complicated chain of transactions
+- Test cross-contract calls
+- Profile [gas](https://docs.near.org/docs/concepts/gas) & [storage](https://docs.near.org/docs/concepts/storage-staking) usage for your contract, establishing lower bounds for costs of deployed contracts and rapidly identifying problematic areas prior to deploying.
+- Inspect intermediate state of all calls in a complicated chain of transactions
 
 To view this documentation locally, clone this repo and from this folder run `cargo doc --open`.
 
@@ -36,7 +36,6 @@ near-sdk = "=3.1.0"
 
 Note that you need to add the `tag` (or `commit`) of the version.
 
-
 ## Workspace setup
 
 If you want to check gas & storage usage of one Rust contract, you can add the above dependencies to `Cargo.toml` in the root of your project. If you want to test cross-contract calls, we recommend setting up a cargo [workspace](https://doc.rust-lang.org/cargo/reference/workspaces.html). Here's how it works:
@@ -51,7 +50,6 @@ mv contract contract-wrap
 ```
 
 Now in the root of the project (`contract-wrap`), create a new `Cargo.toml`. You'll have to add the normal `[package]` section, but unlike most projects you won't have any `dependencies`, only `dev-dependencies` and a `workspace`:
-
 
 ```toml
 [dev-dependencies]
@@ -69,10 +67,9 @@ Now when you want to create test contracts, you can add a new subfolder to your 
 
 Other cleanup:
 
-* You can move any `[profile.release]` settings from your nested project up to the root of the workspace, since workspace members inherit these settings from the workspace root.
-* You can remove the nested project's `target`, since all workspace members will be built to the root project's `target` directory
-* If you were building with `cargo build`, you can now build all workspace members at once with `cargo build --all`
-
+- You can move any `[profile.release]` settings from your nested project up to the root of the workspace, since workspace members inherit these settings from the workspace root.
+- You can remove the nested project's `target`, since all workspace members will be built to the root project's `target` directory
+- If you were building with `cargo build`, you can now build all workspace members at once with `cargo build --workspace`
 
 ## Test files
 
@@ -168,7 +165,6 @@ fn simulate_some_change_method() {
     assert!(result.is_ok());
 }
 ```
-
 
 ## Optional macros
 
@@ -322,10 +318,9 @@ The output from this `println!` might look something like this:
     touching_trie_node -> 1046627135190 [55% total, 65% host]
     ------ Actions --------
     ------------------------------
-    
-    
-    tokens_burnt: 0.00043195379520539996Ⓝ
 
+
+    tokens_burnt: 0.00043195379520539996Ⓝ
 
 ## Profile [storage](https://docs.near.org/docs/concepts/storage-staking) costs
 
@@ -339,7 +334,6 @@ let storage_usage = account.storage_usage;
 ```
 
 You can use this info to do detailed profiling of how contract calls alter the storage usage of accounts.
-
 
 ## Inspect intermediate state of all calls in a complicated chain of transactions
 
@@ -359,9 +353,9 @@ let outcome = some_account.call(
 
 If `some_contract.method` here makes cross-contract calls, `near-sdk-sim` will allow all of these calls to complete. You can then inspect the entire chain of calls via the `outcome` struct. Some useful methods:
 
-* [`outcome.promise_results()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L123-L126)
-* [`outcome.get_receipt_results()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L114-L117)
-* [`outcome.logs()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L156-L159)
+- [`outcome.promise_results()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L123-L126)
+- [`outcome.get_receipt_results()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L114-L117)
+- [`outcome.logs()`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L156-L159)
 
 You can use these with `println!` and [pretty print interpolation](https://riptutorial.com/rust/example/1248/advanced-usage-of-println-):
 
@@ -404,7 +398,6 @@ You might see something like this:
 
 You can see it's a little hard to tell which call is which, since the [ExecutionResult](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/near-sdk-sim/src/outcome.rs#L20-L27) does not yet include the name of the contract or method. To help debug, you can use `log!` in your contract methods. All `log!` output will show up in the `logs` arrays in the ExecutionOutcomes shown above.
 
-
 ## Check expected transaction failures
 
 If you want to check something in the `logs` or `status` of one of the transactions in one of these call chains mentioned above, you can use string matching. To check that the Failure above matches your expectations, you could:
@@ -432,7 +425,6 @@ This [`promise_errors`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f
 
 Parsing `logs` is much simpler, whether [from `get_receipt_results`](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/examples/fungible-token/tests/sim/with_macros.rs#L128-L134) or [from `logs` directly](https://github.com/near/near-sdk-rs/blob/9cf75cf4a537a6f9906d82cfcadd97ae4a3443b6/examples/fungible-token/tests/sim/with_macros.rs#L70-L74).
 
-
 # Tweaking the genesis config
 
 For many simulation tests, using `init_simulator(None)` is good enough. This uses the [default genesis configuration settings](https://github.com/near/near-sdk-rs/blob/0a9a56f1590e1f19efc974160c88f32efcb91ef4/near-sdk-sim/src/runtime.rs#L59-L72):
@@ -458,6 +450,34 @@ use near_sdk_sim::runtime::GenesisConfig;
 pub fn init () {
     let mut genesis = GenesisConfig::default();
     genesis.gas_price = genesis.gas_price * 10;
+    let root = init_simulator(Some(genesis));
+}
+```
+
+## Loading dumped state from testnet/mainnet contract
+
+This is useful when your test depends on real contract state that exists on testnet and mainnet. For example, storage cost and some gas cost on testnet is depends on the real size of the state that your contract used on testnet and mainnet. So download and start simulator with them gives you a more accurate understanding of gas/storage cost. Another use case is you'd like to migrate your contract state format from old struct defintion to new, in this case fetch testnet states and run integration tests locally will give you confident that your migration works without breaking contract methods.
+
+First you'll need a tool to download state of given contract. Note, the `view_state` rpc doesn't give you the same format that you can passed to simulator as initial state. The major difference is intitial state need every state record typed and has its account id. You can use this [script](https://github.com/near/repro-near-funcall/blob/master/collect-state-records.js) to download multiple contract account state, at given height, in a format that can be used as initial state of near-sdk-sim:
+
+```
+# latest block height:
+node collect-state-records.js -a contract1.testnet contract2.testnet > state_records.json
+# given block height 111111:
+node collect-state-records.js -a contract1.testnet contract2.testnet -b 111111 > state_records.json
+# mainnet:
+node collect-state-records.js -a contract1.near contract2.near -u https://rpc.near.org > state_records.json
+```
+
+Now you can load `state_records.json`, which contains all state of your specified contracts in near-sdk-sim, by set it in `GenesisConfig`:
+
+```rust
+pub fn init () {
+    let genesis = GenesisConfig::default()
+        // must have contract accounts exist, otherwise state_records are invalid and init runtime will fail
+        .add_account("contract1.testnet", 10000000000000000000)
+        .add_account("contract2.testnet", 10000000000000000000)
+        .load_state_records("./state_records.json");
     let root = init_simulator(Some(genesis));
 }
 ```

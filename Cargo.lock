@@ -1718,6 +1718,8 @@ dependencies = [
  "near-vm-logic",
  "quickcheck",
  "quickcheck_macros",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

@@ -1,0 +1,86 @@
+[
+  {
+    "Data": {
+      "account_id": "simple-state.repro.testnet",
+      "data_key": "U1RBVEU=",
+      "value": "AQAAAA0AAAByZXByby50ZXN0bmV0AwAAAG9vbw=="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "U1RBVEU=",
+      "value": "CAAAAHJlY29yZHNpAgAAAAAAAAAIAAAAcmVjb3Jkc2sCAAAAAAAAAAgAAAByZWNvcmRzdg=="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "YWNjb3VudC1yZWNvcmRpBQAAAGhlbGxv",
+      "value": "AAAAAAAAAAA="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "YWNjb3VudC1yZWNvcmRpBgAAAGhlbGxvMg==",
+      "value": "AAAAAAAAAAA="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "YWNjb3VudC1yZWNvcmRrAAAAAAAAAAA=",
+      "value": "BgAAAGhlbGxvMg=="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "YWNjb3VudC1yZWNvcmR2AAAAAAAAAAA=",
+      "value": "BgAAAHdvcmxkMg=="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc2kNAAAAcmVwcm8udGVzdG5ldA==",
+      "value": "AAAAAAAAAAA="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc2kcAAAAbXVsdGlwbGUtc3RhdGUucmVwcm8udGVzdG5ldA==",
+      "value": "AQAAAAAAAAA="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc2sAAAAAAAAAAA==",
+      "value": "DQAAAHJlcHJvLnRlc3RuZXQ="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc2sBAAAAAAAAAA==",
+      "value": "HAAAAG11bHRpcGxlLXN0YXRlLnJlcHJvLnRlc3RuZXQ="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc3YAAAAAAAAAAA==",
+      "value": "DwAAAGFjY291bnQtcmVjb3JkaQEAAAAAAAAADwAAAGFjY291bnQtcmVjb3JkawEAAAAAAAAADwAAAGFjY291bnQtcmVjb3Jkdg=="
+    }
+  },
+  {
+    "Data": {
+      "account_id": "multiple-state.repro.testnet",
+      "data_key": "cmVjb3Jkc3YBAAAAAAAAAA==",
+      "value": "DwAAAGFjY291bnQtcmVjb3JkaQEAAAAAAAAADwAAAGFjY291bnQtcmVjb3JkawEAAAAAAAAADwAAAGFjY291bnQtcmVjb3Jkdg=="
+    }
+  }
+]
