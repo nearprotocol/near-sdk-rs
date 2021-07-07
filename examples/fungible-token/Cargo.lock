@@ -1512,7 +1512,7 @@ checksum = "0debeb9fcf88823ea64d64e4a815ab1643f33127d995978e099942ce38f25238"
 
 [[package]]
 name = "near-contract-standards"
-version = "3.1.1"
+version = "3.2.0"
 dependencies = [
  "near-sdk",
 ]
