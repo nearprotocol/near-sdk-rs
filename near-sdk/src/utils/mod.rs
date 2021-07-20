@@ -1,6 +1,10 @@
 pub(crate) mod storage_key_impl;
 
 #[cfg(feature = "unstable")]
+mod stable_map;
+#[cfg(feature = "unstable")]
+pub(crate) use self::stable_map::StableMap;
+#[cfg(feature = "unstable")]
 mod cache_entry;
 #[cfg(feature = "unstable")]
 pub(crate) use cache_entry::{CacheEntry, EntryState};

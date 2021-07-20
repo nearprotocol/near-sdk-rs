@@ -33,7 +33,6 @@ impl<T> CacheEntry<T> {
 
     /// Replaces the current value with a new one. This changes the state of the cell to mutated
     /// if either the old or new value is [`Some<T>`].
-    #[allow(dead_code)]
     pub fn replace(&mut self, value: Option<T>) -> Option<T> {
         let old_value = core::mem::replace(&mut self.value, value);
 
