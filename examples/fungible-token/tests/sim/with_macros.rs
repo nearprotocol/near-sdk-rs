@@ -247,6 +247,8 @@ fn simulate_transfer_call_promise_panics_for_a_full_refund() {
     );
     assert!(res.is_ok());
 
+    println!("profile_data: {:#?}", res.profile_data());
+
     assert_eq!(res.promise_errors().len(), 1);
 
     if let ExecutionStatus::Failure(execution_error) =
