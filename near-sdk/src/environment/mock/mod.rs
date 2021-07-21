@@ -1,6 +1,10 @@
+mod external;
 mod mocked_blockchain;
+mod receipt;
 
+pub(crate) use self::external::SdkExternal;
 pub use self::mocked_blockchain::MockedBlockchain;
+pub use self::receipt::{Receipt, VmAction};
 
 /// Perform function on a mutable reference to the [`MockedBlockchain`]. This can only be used
 /// inside tests.

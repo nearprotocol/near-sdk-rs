@@ -1,7 +1,7 @@
+use super::{Receipt, SdkExternal};
 use crate::test_utils::VMContextBuilder;
 use crate::types::{Balance, PromiseResult};
 use crate::RuntimeFeesConfig;
-use near_vm_logic::mocks::mock_external::{MockedExternal, Receipt};
 use near_vm_logic::mocks::mock_memory::MockedMemory;
 use near_vm_logic::types::PromiseResult as VmPromiseResult;
 use near_vm_logic::{External, MemoryLike, VMConfig, VMContext, VMLogic, VMOutcome};
@@ -35,7 +35,7 @@ impl Default for MockedBlockchain {
 }
 
 struct LogicFixture {
-    ext: Box<MockedExternal>,
+    ext: Box<SdkExternal>,
     memory: Box<dyn MemoryLike>,
     #[allow(clippy::box_vec)]
     promise_results: Box<Vec<VmPromiseResult>>,
@@ -53,7 +53,7 @@ impl MockedBlockchain {
         validators: HashMap<String, Balance>,
         memory_opt: Option<Box<dyn MemoryLike>>,
     ) -> Self {
-        let mut ext = Box::new(MockedExternal::new());
+        let mut ext = Box::new(SdkExternal::new());
         ext.fake_trie = storage;
         ext.validators = validators;
         let memory = memory_opt.unwrap_or_else(|| Box::new(MockedMemory {}));
@@ -85,7 +85,7 @@ impl MockedBlockchain {
     }
 
     pub fn created_receipts(&self) -> &Vec<Receipt> {
-        self.logic_fixture.ext.get_receipt_create_calls()
+        &self.logic_fixture.ext.receipts
     }
     pub fn outcome(&self) -> VMOutcome {
         self.logic.borrow().clone_outcome()
