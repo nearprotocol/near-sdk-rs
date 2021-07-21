@@ -8,7 +8,7 @@ use near_sdk::AccountId;
 pub trait NonFungibleTokenEnumeration {
     /// Returns the total supply of non-fungible tokens as a string representing an
     /// unsigned 128-bit integer to avoid JSON number limit of 2^53.
-    fn nft_total_supply(self) -> U128;
+    fn nft_total_supply(&self) -> U128;
 
     /// Get a list of all tokens
     ///
@@ -32,7 +32,7 @@ pub trait NonFungibleTokenEnumeration {
     /// Returns the number of non-fungible tokens owned by given `account_id` as
     /// a string representing the value as an unsigned 128-bit integer to avoid JSON
     /// number limit of 2^53.
-    fn nft_supply_for_owner(self, account_id: AccountId) -> U128;
+    fn nft_supply_for_owner(&self, account_id: AccountId) -> U128;
 
     /// Get list of all tokens owned by a given account
     ///

@@ -19,7 +19,7 @@ impl NonFungibleToken {
 }
 
 impl NonFungibleTokenEnumeration for NonFungibleToken {
-    fn nft_total_supply(self) -> U128 {
+    fn nft_total_supply(&self) -> U128 {
         // An unfortunate cast from the max of TreeMap to the spec
         (self.owner_by_id.len() as u128).into()
     }
@@ -43,8 +43,8 @@ impl NonFungibleTokenEnumeration for NonFungibleToken {
             .collect()
     }
 
-    fn nft_supply_for_owner(self, account_id: AccountId) -> U128 {
-        let tokens_per_owner = self.tokens_per_owner.expect(
+    fn nft_supply_for_owner(&self, account_id: AccountId) -> U128 {
+        let tokens_per_owner = self.tokens_per_owner.as_ref().expect(
             "Could not find tokens_per_owner when calling a method on the enumeration standard.",
         );
         tokens_per_owner

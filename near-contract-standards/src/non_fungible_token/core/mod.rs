@@ -94,7 +94,7 @@ pub trait NonFungibleTokenCore {
     ) -> PromiseOrValue<bool>;
 
     /// Returns the token with the given `token_id` or `null` if no such token.
-    fn nft_token(self, token_id: TokenId) -> Option<Token>;
+    fn nft_token(&self, token_id: TokenId) -> Option<Token>;
 
     /// Mint a new token. Not part of official standard, but needed in most situations.
     /// Consuming contract expected to wrap this with an `nft_mint` function.

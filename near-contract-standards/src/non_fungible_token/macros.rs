@@ -32,7 +32,7 @@ macro_rules! impl_non_fungible_token_core {
                 self.$token.nft_transfer_call(receiver_id, token_id, approval_id, memo, msg)
             }
 
-            fn nft_token(self, token_id: TokenId) -> Option<Token> {
+            fn nft_token(&self, token_id: TokenId) -> Option<Token> {
                 self.$token.nft_token(token_id)
             }
 
@@ -118,7 +118,7 @@ macro_rules! impl_non_fungible_token_enumeration {
 
         #[near_bindgen]
         impl NonFungibleTokenEnumeration for $contract {
-            fn nft_total_supply(self) -> U128 {
+            fn nft_total_supply(&self) -> U128 {
                 self.$token.nft_total_supply()
             }
 
@@ -126,7 +126,7 @@ macro_rules! impl_non_fungible_token_enumeration {
                 self.$token.nft_tokens(from_index, limit)
             }
 
-            fn nft_supply_for_owner(self, account_id: AccountId) -> U128 {
+            fn nft_supply_for_owner(&self, account_id: AccountId) -> U128 {
                 self.$token.nft_supply_for_owner(account_id)
             }
 
