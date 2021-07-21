@@ -14,12 +14,6 @@ impl ItemImplInfo {
         res
     }
 
-    #[cfg(target_arch = "wasm32")]
-    pub fn marshall_code(&self) -> TokenStream2 {
-        quote! {}
-    }
-
-    #[cfg(not(target_arch = "wasm32"))]
     pub fn marshall_code(&self) -> TokenStream2 {
         use quote::{format_ident, quote, ToTokens};
         let orig_name = self.ty.clone().into_token_stream();
@@ -35,6 +29,7 @@ impl ItemImplInfo {
             }
         }
         quote! {
+         #[cfg(not(target_arch = "wasm32"))]
          impl #name {
            #res
          }
@@ -47,7 +42,7 @@ impl ItemImplInfo {
 mod tests {
     use syn::{Type, ImplItemMethod, parse_quote};
     use quote::quote;
-    use crate::info_extractor::ImplItemMethodInfo;
+    use crate::core_impl::info_extractor::ImplItemMethodInfo;
 
 
     #[test]

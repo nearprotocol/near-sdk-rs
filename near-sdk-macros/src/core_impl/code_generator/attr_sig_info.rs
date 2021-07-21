@@ -1,6 +1,6 @@
 use syn::export::TokenStream2;
 
-use crate::info_extractor::{
+use crate::core_impl::info_extractor::{
     ArgInfo, AttrSigInfo, BindgenArgType, InputStructType, SerializerType,
 };
 use quote::quote;

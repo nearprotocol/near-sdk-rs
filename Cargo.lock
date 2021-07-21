@@ -1686,20 +1686,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "near-sdk-core"
-version = "3.1.0"
-dependencies = [
- "Inflector",
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "near-sdk-macros"
 version = "3.1.0"
 dependencies = [
- "near-sdk-core",
+ "Inflector",
  "proc-macro2",
  "quote",
  "syn",

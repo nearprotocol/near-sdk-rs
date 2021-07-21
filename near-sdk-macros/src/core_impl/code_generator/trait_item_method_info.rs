@@ -1,4 +1,4 @@
-use crate::{
+use crate::core_impl::{
     info_extractor::{InputStructType, SerializerType, TraitItemMethodInfo},
     AttrSigInfo,
 };

@@ -1,5 +1,3 @@
-#![recursion_limit = "128"]
-
 mod code_generator;
 mod info_extractor;
 mod metadata;

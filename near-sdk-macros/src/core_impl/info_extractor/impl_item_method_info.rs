@@ -1,4 +1,4 @@
-use crate::info_extractor::AttrSigInfo;
+use crate::core_impl::info_extractor::AttrSigInfo;
 use syn::{ImplItemMethod, Type, Visibility};
 
 /// Information extracted from `ImplItemMethod`.

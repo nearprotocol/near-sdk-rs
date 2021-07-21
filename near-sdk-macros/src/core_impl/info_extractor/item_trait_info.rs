@@ -1,4 +1,4 @@
-use crate::info_extractor::TraitItemMethodInfo;
+use super::TraitItemMethodInfo;
 use inflector::Inflector;
 use syn::export::Span;
 use syn::spanned::Spanned;

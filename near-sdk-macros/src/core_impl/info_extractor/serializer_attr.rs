@@ -1,4 +1,4 @@
-use crate::info_extractor::SerializerType;
+use super::SerializerType;
 use proc_macro2::Ident;
 use syn::parse::{Parse, ParseStream};
 use syn::{parenthesized, Error};

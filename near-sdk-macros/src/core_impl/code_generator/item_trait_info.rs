@@ -1,4 +1,4 @@
-use crate::info_extractor::ItemTraitInfo;
+use crate::core_impl::info_extractor::ItemTraitInfo;
 use quote::quote;
 use syn::export::TokenStream2;
 
@@ -27,7 +27,7 @@ impl ItemTraitInfo {
 mod tests {
     use syn::ItemTrait;
     use quote::quote;
-    use crate::info_extractor::ItemTraitInfo;
+    use crate::core_impl::info_extractor::ItemTraitInfo;
 
     #[test]
     fn standard() {

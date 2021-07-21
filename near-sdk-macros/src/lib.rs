@@ -1,9 +1,11 @@
 #![recursion_limit = "128"]
 extern crate proc_macro;
 
+mod core_impl;
+
 use proc_macro::TokenStream;
 
-use near_sdk_core::*;
+use self::core_impl::*;
 use proc_macro2::Span;
 use quote::quote;
 use syn::visit::Visit;

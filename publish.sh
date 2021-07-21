@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -ex
-for p in near-sdk-core near-sdk-macros near-sdk near-contract-standards
+for p in near-sdk-macros near-sdk near-contract-standards
 do
 pushd ./${p}
 cargo publish

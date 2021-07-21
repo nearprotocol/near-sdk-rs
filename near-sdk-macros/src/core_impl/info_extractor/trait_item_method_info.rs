@@ -1,4 +1,4 @@
-use crate::info_extractor::AttrSigInfo;
+use super::AttrSigInfo;
 use syn::export::Span;
 use syn::spanned::Spanned;
 use syn::{Error, LitByteStr, TraitItemMethod};

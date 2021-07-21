@@ -1,5 +1,5 @@
-use crate::info_extractor::serializer_attr::SerializerAttr;
-use crate::info_extractor::SerializerType;
+use crate::core_impl::info_extractor::serializer_attr::SerializerAttr;
+use crate::core_impl::info_extractor::SerializerType;
 use quote::ToTokens;
 use syn::export::Span;
 use syn::{Attribute, Error, Ident, Pat, PatType, Token, Type};
