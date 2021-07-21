@@ -141,3 +141,8 @@ extern "C" {
     pub fn validator_stake(account_id_len: u64, account_id_ptr: u64, stake_ptr: u64);
     pub fn validator_total_stake(stake_ptr: u64);
 }
+
+#[inline]
+pub unsafe fn block_height() -> u64 {
+    block_index()
+}

@@ -152,8 +152,14 @@ pub fn input() -> Option<Vec<u8>> {
 }
 
 /// Current block index.
+#[deprecated(since = "4.0.0", note = "Use block_height instead")]
 pub fn block_index() -> BlockHeight {
-    unsafe { sys::block_index() }
+    block_height()
+}
+
+/// Returns the height of the block the transaction is being executed in.
+pub fn block_height() -> BlockHeight {
+    unsafe { sys::block_height() }
 }
 
 /// Current block timestamp, i.e, number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.

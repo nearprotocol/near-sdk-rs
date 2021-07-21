@@ -24,6 +24,7 @@
   * This type will have `ValidAccountId`'s JSON (de)serialization and the borsh serialization will be equivalent to what it was previously
 * Initializes default for `BLOCKCHAIN_INTERFACE` to avoid requiring to initialize testing environment for tests that don't require custom blockchain interface configuration
   * This default only affects outside of `wasm32` environments and is optional/backwards compatible
+* Deprecates `env::block_index` and replaces it with `env::block_height` for more consistent naming
 * Makes `BLOCKCHAIN_INTERFACE` a concrete type and no longer exports it.
   * If for testing you need this mocked blockchain, `near_sdk::mock::with_mocked_blockchain` can be used
   * `near_sdk::env::take_blockchain_interface` is removed, as this interface is no longer optional
